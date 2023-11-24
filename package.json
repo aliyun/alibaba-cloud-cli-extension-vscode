@@ -127,7 +127,7 @@
     "build": "ncc build ./src/extension.js -o dist/ --license licenses.txt"
   },
   "devDependencies": {
-    "@types/mocha": "^10.0.2",
+    "@types/mocha": "^10.0.6",
     "@types/node": "20.x",
     "@types/vscode": "^1.84.2",
     "@vercel/ncc": "^0.38.1",
