@@ -1,0 +1,73 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Alibaba Cloud CLI commands",
+	"patterns": [
+		{
+			"include": "#subcommand"
+		},
+		{
+			"include": "#argumentName"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#argumentValueUnquoted"
+		},
+		{
+			"include": "#argumentValueSingleQuoted"
+		},
+		{
+			"include": "#argumentValueDoubleQuoted"
+		}
+	],
+	"repository": {
+		"subcommand": {
+			"patterns": [{
+				"name": "storage.type.aliyun",
+				"match": "^([^\\s#-]-+|[^#-])+"
+			}]
+		},
+		"argumentName": {
+			"patterns": [{
+				"name": "variable.other.aliyun",
+				"match": "-[^\\s#]*\\s*"
+			}]
+		},
+		"argumentValueUnquoted": {
+			"patterns": [{
+				"name": "string.unquoted.aliyun",
+				"match": "[^\\s#]+\\s*"
+			}]
+		},
+		"argumentValueSingleQuoted": {
+			"name": "string.quoted.single.aliyun",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.aliyun",
+					"match": "\\\\."
+				}
+			]
+		},
+		"argumentValueDoubleQuoted": {
+			"name": "string.quoted.double.aliyun",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.aliyun",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.hash.aliyun",
+				"match": "\\#.*"
+			}]
+		}
+	},
+	"scopeName": "source.aliyun"
+}

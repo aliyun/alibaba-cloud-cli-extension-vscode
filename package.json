@@ -1,0 +1,151 @@
+{
+  "name": "aliyuncli",
+  "displayName": "Alibaba Cloud CLI Tools",
+  "publisher": "aliyun",
+  "description": "Tools for developing and running commands of the Alibaba Cloud CLI.",
+  "icon": "icons/aliyun_logo_128x128.png",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aliyun/vscode-aliyun-cli.git"
+  },
+  "main": "./dist/index.js",
+  "l10n": "./l10n",
+  "contributes": {
+    "grammars": [
+      {
+        "language": "aliyun",
+        "scopeName": "source.aliyun",
+        "path": "./syntaxes/aliyun.tmLanguage.json"
+      }
+    ],
+    "languages": [
+      {
+        "id": "aliyun",
+        "aliases": [
+          "Aliyun CLI Commands",
+          "aliyun",
+          "aliyuncli"
+        ],
+        "extensions": [
+          ".aliyun"
+        ],
+        "icon": {
+          "light": "./icons/logo.svg",
+          "dark": "./icons/logo.svg"
+        },
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "commands": [
+      {
+        "category": "Aliyun CLI",
+        "command": "aliyuncli.runLineInTerminal",
+        "title": "%aliyuncli.runLineInTerminal.title%"
+      },
+      {
+        "category": "Aliyun CLI",
+        "command": "aliyuncli.runLineInEditor",
+        "title": "%aliyuncli.runLineInEditor.title%"
+      },
+      {
+        "category": "Aliyun CLI",
+        "command": "aliyuncli.installAliyunCLI",
+        "title": "%aliyuncli.installAliyunCLI.title%"
+      },
+      {
+        "category": "Aliyun CLI",
+        "command": "aliyuncli.switchProfile",
+        "title": "%aliyuncli.switchProfile.title%"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "aliyuncli-menus",
+        "label": "%aliyuncli.menu.label%"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "group": "2_aliyuncli",
+          "submenu": "aliyuncli-menus",
+          "title": "%aliyuncli.menu.title%"
+        }
+      ],
+      "aliyuncli-menus": [
+        {
+          "command": "aliyuncli.runLineInTerminal",
+          "title": "%aliyuncli.runLineInTerminal.title%",
+          "when": "editorLangId == 'aliyun'"
+        },
+        {
+          "command": "aliyuncli.runLineInEditor",
+          "title": "%aliyuncli.runLineInEditor.title%",
+          "when": "editorLangId == 'aliyun'"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "aliyuncli.runLineInTerminal",
+          "when": "editorLangId == 'aliyun'"
+        },
+        {
+          "command": "aliyuncli.runLineInEditor",
+          "when": "editorLangId == 'aliyun'"
+        }
+      ]
+    },
+    "icons": {
+      "alibabacloud-logo": {
+        "description": "Alibaba Cloud Logo icon",
+        "default": {
+          "fontPath": "./theme/aliyun-font.woff",
+          "fontCharacter": "\\E000"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js",
+    "test-cov": "c8 -r=lcov -r=html -r=text -r=json npm run test",
+    "updateFont": "node ./build/updateFont.js",
+    "l10n": "vscode-l10n-dev export -o ./l10n ./src",
+    "build": "ncc build ./src/extension.js -o dist/ --license licenses.txt"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.2",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.75.0",
+    "@vercel/ncc": "^0.38.1",
+    "@vscode/l10n-dev": "^0.0.30",
+    "@vscode/test-electron": "^2.3.4",
+    "c8": "^8.0.1",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "webfont": "^11.2.26"
+  },
+  "dependencies": {
+    "httpx": "^2.3.0",
+    "semver": "^7.5.4"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "author": "Alibaba Cloud SDK Team",
+  "license": "Apache-2.0"
+}
