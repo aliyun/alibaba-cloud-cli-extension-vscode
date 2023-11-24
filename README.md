@@ -43,7 +43,7 @@ Initial release
 
 ## License
 
-See the [Apache License 2.0](./LICENSE).
+See the [MIT License](./LICENSE).
 
 ## For more information
 
