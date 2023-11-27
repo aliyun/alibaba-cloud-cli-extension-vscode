@@ -148,7 +148,7 @@
     "test": "test"
   },
   "author": "Alibaba Cloud SDK Team",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/aliyun/alibaba-cloud-cli-extension-vscode/issues"
   },
