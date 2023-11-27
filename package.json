@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/aliyun/vscode-aliyun-cli.git"
+    "url": "git+https://github.com/aliyun/alibaba-cloud-cli-extension-vscode.git"
   },
   "main": "./dist/index.js",
   "l10n": "./l10n",
@@ -148,5 +148,9 @@
     "test": "test"
   },
   "author": "Alibaba Cloud SDK Team",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/aliyun/alibaba-cloud-cli-extension-vscode/issues"
+  },
+  "homepage": "https://github.com/aliyun/alibaba-cloud-cli-extension-vscode#readme"
 }
