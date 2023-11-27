@@ -121,7 +121,8 @@
     "lint": "eslint . --fix",
     "pretest": "npm run lint",
     "test": "node ./test/runTest.js",
-    "test-cov": "c8 -r=lcov -r=html -r=text -r=json npm run test",
+    "test-unit": "mocha -R spec -t 10000 ./test/*.test.js",
+    "test-cov": "c8 -r=lcov -r=html -r=json npm run test-unit",
     "updateFont": "node ./build/updateFont.js",
     "l10n": "vscode-l10n-dev export -o ./l10n ./src",
     "build": "ncc build ./src/extension.js -o dist/ --license licenses.txt"

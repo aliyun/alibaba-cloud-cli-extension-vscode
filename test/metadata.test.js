@@ -1,24 +1,24 @@
 const assert = require('assert');
 
-const metadata = require('../../src/metadata');
+const metadata = require('../src/metadata');
 
-suite('metadata Test Suite', () => {
-  test('getProducts', () => {
+describe('metadata Test Suite', () => {
+  it('getProducts', () => {
     assert.ok(metadata.getProducts().length > 0);
   });
 
-  test('getApis', () => {
+  it('getApis', () => {
     assert.ok(metadata.getApis('ecs').length > 0);
     assert.deepStrictEqual(metadata.getApis('invald'), []);
   });
 
-  test('getLink', () => {
+  it('getLink', () => {
     assert.strictEqual(metadata.getLink('ecs', 'DescribeRegions'), 'https://api.aliyun.com/document/Ecs/2014-05-26/DescribeRegions');
     assert.strictEqual(metadata.getLink('invalidProduct', 'DescribeRegions'), undefined);
   });
 
-  test('getParameters', async () => {
-    const parameters = await metadata.getParameters('ecs', 'DescribeRegions');
+  it('getParameters', async () => {
+    const parameters = await metadata.getParameters('ecs', 'DescribeRegions', 'zh-CN');
     assert.deepStrictEqual(parameters, [
       {
         "in": "query",
