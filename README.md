@@ -1,5 +1,10 @@
 # VS Code extension for Alibaba Cloud CLI
 
+[![CI](https://github.com/aliyun/alibaba-cloud-cli-extension-vscode/actions/workflows/CI.yml/badge.svg)](https://github.com/aliyun/alibaba-cloud-cli-extension-vscode/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/github/aliyun/alibaba-cloud-cli-extension-vscode/graph/badge.svg?token=BJMY7C7VGR)](https://codecov.io/github/aliyun/alibaba-cloud-cli-extension-vscode)
+[![Marketplace Version](https://img.shields.io/vscode-marketplace/v/alibabacloud-openapi.aliyuncli.svg)
+![Marketplace Downloads](https://img.shields.io/vscode-marketplace/d/alibabacloud-openapi.aliyuncli.svg)](https://marketplace.visualstudio.com/items?itemName=alibabacloud-openapi.aliyuncli)
+
 Notes for developing and running commands with the [Alibaba Cloud CLI](https://github.com/aliyun/aliyun-cli).
 
 ## Features
