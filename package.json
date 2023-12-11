@@ -132,7 +132,7 @@
     "@types/node": "20.x",
     "@types/vscode": "^1.75.0",
     "@vercel/ncc": "^0.38.1",
-    "@vscode/l10n-dev": "^0.0.30",
+    "@vscode/l10n-dev": "^0.0.31",
     "@vscode/test-electron": "^2.3.8",
     "c8": "^8.0.1",
     "eslint": "^8.55.0",
