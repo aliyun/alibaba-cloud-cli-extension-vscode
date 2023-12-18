@@ -135,7 +135,7 @@
     "@vscode/l10n-dev": "^0.0.31",
     "@vscode/test-electron": "^2.3.8",
     "c8": "^8.0.1",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "glob": "^10.3.3",
     "mocha": "^10.2.0",
     "webfont": "^11.2.26"
