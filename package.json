@@ -141,7 +141,7 @@
     "webfont": "^11.2.26"
   },
   "dependencies": {
-    "httpx": "^2.3.1",
+    "httpx": "^3.0.1",
     "semver": "^7.6.0"
   },
   "directories": {
