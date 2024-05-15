@@ -11,7 +11,7 @@ Notes for developing and running commands with the [Alibaba Cloud CLI](https://g
 
 ### Alibaba Cloud commands
 
-- [x] Syntanx highlight for `.aliyun` files
+- [x] Syntax highlight for `.aliyun` files
 - [x] Codelens for Alibaba Cloud CLI commands
 - [x] Run Alibaba Cloud CLI command in terminal
 - [x] Run Alibaba Cloud CLI command in editor
