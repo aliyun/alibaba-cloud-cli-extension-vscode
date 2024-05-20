@@ -142,7 +142,7 @@
   },
   "dependencies": {
     "httpx": "^2.3.1",
-    "semver": "^7.6.0"
+    "semver": "^7.6.2"
   },
   "directories": {
     "test": "test"
