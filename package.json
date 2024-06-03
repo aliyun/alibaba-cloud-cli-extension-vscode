@@ -133,7 +133,7 @@
     "@types/vscode": "^1.75.0",
     "@vercel/ncc": "^0.38.1",
     "@vscode/l10n-dev": "^0.0.35",
-    "@vscode/test-electron": "^2.3.9",
+    "@vscode/test-electron": "^2.4.0",
     "c8": "^9.1.0",
     "eslint": "^9.0.0",
     "glob": "^10.3.15",
