@@ -130,7 +130,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "20.x",
-    "@types/vscode": "^1.75.0",
+    "@types/vscode": "^1.91.0",
     "@vercel/ncc": "^0.38.1",
     "@vscode/l10n-dev": "^0.0.35",
     "@vscode/test-electron": "^2.3.9",
