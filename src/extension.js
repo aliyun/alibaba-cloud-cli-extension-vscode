@@ -71,15 +71,15 @@ async function activate(context) {
   context.subscriptions.push(vscode.commands.registerTextEditorCommand('aliyuncli.runLineInEditor', async (source) => {
     const selectionStart = source.selection.start;
     const selectionEnd = source.selection.end;
-    if (selectionStart.line === selectionEnd.line) {
-      // single line command
-      const command = source.document.getText(new vscode.Range(selectionStart, selectionEnd));
-      const document = await vscode.workspace.openTextDocument({ language: 'json' });
-      const target = await vscode.window.showTextDocument(document, vscode.ViewColumn.Two, true);
-      await replace(target, `Running command: ${command}`);
-      const {stdout} = await exec(command);
-      await replace(target, stdout);
-    }
+    // single line command
+    const selectedText = source.document.getText(new vscode.Range(selectionStart, selectionEnd));
+    const document = await vscode.workspace.openTextDocument({ language: 'json' });
+    const target = await vscode.window.showTextDocument(document, vscode.ViewColumn.Two, true);
+    const command = selectedText.trim();
+    console.log(`Running command: ${command}`);
+    await replace(target, `Running command: ${command}`);
+    const {stdout} = await exec(command);
+    await replace(target, stdout);
   }));
 
   context.subscriptions.push(vscode.commands.registerCommand("aliyuncli.codelensAction", (document, range) => {
@@ -281,7 +281,15 @@ async function notFound(wrongVersion) {
 }
 
 function installCLI() {
-  vscode.env.openExternal(vscode.Uri.parse('https://help.aliyun.com/document_detail/121988.html'));
+  let url = 'https://help.aliyun.com/zh/cli/installation-guide/';
+  if (os.platform() === "darwin") {
+    url = 'https://help.aliyun.com/zh/cli/install-cli-on-macos';
+  } else if (os.platform() === 'win32') {
+    url = 'https://help.aliyun.com/zh/cli/install-cli-on-windows';
+  } else if (os.platform() === "linux") {
+    url = 'https://help.aliyun.com/zh/cli/install-cli-on-linux';
+  }
+  vscode.env.openExternal(vscode.Uri.parse(url));
 }
 
 async function loadProfiles() {
