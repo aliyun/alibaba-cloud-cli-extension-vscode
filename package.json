@@ -125,7 +125,8 @@
     "test-cov": "c8 -r=lcov -r=html -r=json npm run test-unit",
     "updateFont": "node ./build/updateFont.js",
     "l10n": "vscode-l10n-dev export -o ./l10n ./src",
-    "build": "ncc build ./src/extension.js -o dist/ --license licenses.txt"
+    "build": "ncc build ./src/extension.js -o dist/ --license licenses.txt",
+    "vscode:prepublish": "npm run l10n && npm run build"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
