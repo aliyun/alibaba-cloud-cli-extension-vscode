@@ -4,7 +4,7 @@
   "publisher": "alibabacloud-openapi",
   "description": "Tools for developing and running commands of the Alibaba Cloud CLI.",
   "icon": "icons/aliyun_logo_128x128.png",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.75.0"
   },
