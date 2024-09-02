@@ -7,6 +7,7 @@ const fsx = require('fs/promises');
 const os = require('os');
 const path = require('path');
 const semver = require('semver');
+
 const metadata = require('./metadata');
 
 function getLocale() {
@@ -21,7 +22,7 @@ function getLocale() {
 function exec(command) {
   return new Promise((resolve, reject) => {
     cp.exec(command, (error, stdout, stderr) => {
-      (error ? reject : resolve)({ error, stdout, stderr });
+      resolve({ error, stdout, stderr });
     });
   });
 }
@@ -45,21 +46,36 @@ async function activate(context) {
   console.log('Congratulations, your extension "aliyuncli" is now active!');
   const locale = getLocale();
 
+  async function popupInstallCLI(message) {
+    const result = await vscode.window.showInformationMessage(message,
+      {
+        title: 'Documentation',
+        run: installCLI
+      }
+    );
+
+    if (result && result.run) {
+      result.run();
+    }
+  }
+
   async function getProcess() {
+    const results = await exec('which aliyun');
+    if (results.stdout === "") {
+      const message = `The command 'aliyun' not found on PATH, please make sure it is installed.`;
+      await popupInstallCLI(message);
+      return;
+    }
+
     const { stdout } = await exec('aliyun version');
     let version = stdout.trim();
     if (version && semver.valid(version) && !semver.gte(version, '3.0.183')) {
-      return 'wrongVersion';
+      const message = '\'aliyun\' >= 3.0.183 required, please update your installation.';
+      await popupInstallCLI(message);
     }
-
-    return version;
   }
 
-  getProcess().then((version) => {
-    if (version === 'wrongVersion') {
-      notFound(version === 'wrongVersion');
-    }
-  });
+  getProcess();
 
   context.subscriptions.push(vscode.commands.registerCommand('aliyuncli.installAliyunCLI', installCLI));
   context.subscriptions.push(vscode.commands.registerCommand('aliyuncli.switchProfile', switchProfile));
@@ -129,6 +145,7 @@ async function activate(context) {
 
   // create a new status bar item that we can now manage
   const myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+
   async function updateStatusBarItem() {
     const config = await loadProfiles();
     const alibabacloud = vscode.l10n.t('Alibaba Cloud');
@@ -257,8 +274,7 @@ async function activate(context) {
 
       const link = metadata.getLink(productName, api, getLocale());
       if (link) {
-        const ms = new vscode.MarkdownString(`[View API documentation on OpenAPI Developer Portal](${link})`);
-
+        const ms = new vscode.MarkdownString(`[${vscode.l10n.t('View API documentation on OpenAPI Developer Portal')}](${link})`);
         return new vscode.Hover(ms, new vscode.Range(position, position));
       }
     }
@@ -266,18 +282,7 @@ async function activate(context) {
 }
 
 async function notFound(wrongVersion) {
-  const { window } = vscode;
-  const message = wrongVersion ? '\'aliyun\' >= 3.0.183 required, please update your installation.' : '\'aliyun\' not found on PATH, please make sure it is installed.';
-  const result = await window.showInformationMessage(message,
-    {
-      title: 'Documentation',
-      run: installCLI
-    }
-  );
 
-  if (result && result.run) {
-    result.run();
-  }
 }
 
 function installCLI() {
@@ -313,7 +318,7 @@ async function saveProfiles(config) {
 
 async function switchProfile() {
   const quickPick = vscode.window.createQuickPick();
-  quickPick.placeholder = 'Select a profile';
+  quickPick.placeholder = vscode.l10n.t('Select a profile');
 
   const items = [];
 
