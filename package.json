@@ -80,8 +80,7 @@
       "editor/context": [
         {
           "group": "2_aliyuncli",
-          "submenu": "aliyuncli-menus",
-          "title": "%aliyuncli.menu.title%"
+          "submenu": "aliyuncli-menus"
         }
       ],
       "aliyuncli-menus": [
