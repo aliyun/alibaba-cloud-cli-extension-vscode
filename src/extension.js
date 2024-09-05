@@ -104,7 +104,14 @@ async function activate(context) {
     ];
 
     const text = vscode.window.activeTextEditor.document.getText(range);
-    vscode.window.activeTerminal.sendText(text);
+    if (vscode.window.activeTerminal) {
+      vscode.window.activeTerminal.sendText(text);
+      return;
+    }
+
+    const terminal = vscode.window.createTerminal();
+    terminal.show();
+    terminal.sendText(text);
   }));
 
   context.subscriptions.push(vscode.languages.registerCodeLensProvider({
