@@ -60,7 +60,13 @@ async function activate(context) {
   }
 
   async function getProcess() {
-    const results = await exec('which aliyun');
+    let results;
+    if (os.platform() === 'win32') {
+      results = await exec('where aliyun');
+    } else {
+      results = await exec('which aliyun');
+    }
+
     if (results.stdout === "") {
       const message = `The command 'aliyun' not found on PATH, please make sure it is installed.`;
       await popupInstallCLI(message);
@@ -75,6 +81,7 @@ async function activate(context) {
     }
   }
 
+  // run in background
   getProcess();
 
   context.subscriptions.push(vscode.commands.registerCommand('aliyuncli.installAliyunCLI', installCLI));
