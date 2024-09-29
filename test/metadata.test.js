@@ -24,7 +24,7 @@ describe('metadata Test Suite', () => {
         "in": "query",
         "name": "InstanceChargeType",
         "schema": {
-          "description": "实例的计费方式，更多详情，请参见[计费概述](~~25398~~)。取值范围：\n\n- PrePaid：包年包月。此时，您必须确认自己的账号支持余额支付或者信用支付，否则将报错InvalidPayMethod。\n- PostPaid：按量付费。\n\n默认值为PostPaid。",
+          "description": "实例的计费方式，更多信息，请参见[计费概述](~~25398~~)。取值范围：\n\n- PrePaid：包年包月。此时，请确认自己的账号支持余额支付或者信用支付，否则将报错InvalidPayMethod。\n- PostPaid：按量付费。\n- SpotWithPriceLimit：设置上限价格。\n- SpotAsPriceGo：系统自动出价，最高按量付费价格。\n\n默认值：PostPaid。",
           "example": "PrePaid",
           "required": false,
           "type": "string"
@@ -34,7 +34,7 @@ describe('metadata Test Suite', () => {
         "in": "query",
         "name": "ResourceType",
         "schema": {
-          "description": "资源类型。取值范围：\n-  instance：ECS实例\n-  disk：磁盘\n-  reservedinstance：预留实例券\n-  scu：存储容量单位包\n\n默认值：instance",
+          "description": "资源类型。取值范围：\n\n-  instance：ECS实例。\n-  disk：磁盘。\n-  reservedinstance：预留实例券。\n-  scu：存储容量单位包。\n\n默认值：instance。",
           "example": "instance",
           "required": false,
           "type": "string"
@@ -44,7 +44,7 @@ describe('metadata Test Suite', () => {
         "in": "query",
         "name": "AcceptLanguage",
         "schema": {
-          "description": " 根据汉语、英语和日语筛选返回结果。更多详情，请参见[RFC7231](https://tools.ietf.org/html/rfc7231)。取值范围：  \n         \n- zh-CN：中文。\n- en-US：英文。\n- ja：日文。\n\n默认值为zh-CN。",
+          "description": " 根据汉语、英语和日语筛选返回结果。更多详情，请参见[RFC 7231](https://tools.ietf.org/html/rfc7231)。取值范围：  \n         \n- zh-CN：中文。\n- en-US：英文。\n- ja：日文。\n\n默认值：zh-CN。",
           "example": "zh-CN",
           "required": false,
           "type": "string"
